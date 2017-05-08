@@ -11,9 +11,9 @@ $(function(){
 
    //新闻切换
     $('.tab_Bar .tab_Trigger').click(function()
-        {   
+        {
         	var index=$(this).index();
-            $(this).addClass("active").siblings().removeClass("active"); 
+            $(this).addClass("active").siblings().removeClass("active");
             $('.tab_Content').hide();
             $('.tab_Content').eq(index).show();
         });
@@ -53,7 +53,7 @@ var dialog = {
                 dialogStr += '<a href="javascript:;" id="js_dialog_func" class="ui-dialog__btn">'+lb+'</a>';
             }
             dialogStr += '<a href="javascript:;" class="ui-dialog__btn primary" onclick="dialog.close()">'+rb+'</a>';
-        
+
         dialogStr += '</div></div></div>';
         $('body').append(dialogStr);
         $('#js_dialog').show();
@@ -63,3 +63,26 @@ var dialog = {
        $('#js_dialog').remove();
     }
 }
+
+// /点击倒计时/ //
+var validCode = true;
+$("#verification_code").click(function() {
+
+    var time = 60;
+    var code = $(this);
+    if (validCode) {
+        validCode = false;
+        code.attr("disabled", true);
+
+        var t = setInterval(function() {
+            time--;
+            code.html(time + "秒");
+            if (time == 0) {
+                clearInterval(t);
+                code.html("重新获取");
+                validCode = true;
+                code.removeAttr("disabled");
+            };
+        }, 1000);
+    }
+});
