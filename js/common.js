@@ -86,3 +86,12 @@ $("#verification_code").click(function() {
         }, 1000);
     }
 });
+// 获取 url 参数
+
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(r[2]);
+    return null;
+}
