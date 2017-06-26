@@ -9,9 +9,9 @@ $(function(){
 				spaceBetween: 5,
 				loop:true,
 				autoplay : 3000,
-				speed:900,
+				speed:900
 			});
-    
+
     $(".lazy").lazyload({
       effect : "fadeIn"
      });

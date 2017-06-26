@@ -10,13 +10,13 @@ $(function(){
 	}
 
    //新闻切换
-    $('.tab_Bar .tab_Trigger').click(function()
-        {
-        	var index=$(this).index();
-            $(this).addClass("active").siblings().removeClass("active");
-            $('.tab_Content').hide();
-            $('.tab_Content').eq(index).show();
-        });
+    // $('.tab_Bar .tab_Trigger').click(function()
+    //     {
+    //     	var index=$(this).index();
+    //         $(this).addClass("active").siblings().removeClass("active");
+    //         $('.tab_Content').hide();
+    //         $('.tab_Content').eq(index).show();
+    //     });
 
     // 提交disabled
     $(".feedback-button").click(function(){
@@ -25,6 +25,31 @@ $(function(){
 
 })
 
+$(function(){
+
+  Function.prototype.addMethod = function(name,fn){
+      this[name] = fn;
+      return this;
+  }
+
+  var methods = function(){};
+
+  methods.addMethod('tab_func',function(ele_f,ele_c,ele_content){
+    $(ele_f).on('click',ele_c,function(){
+      var index=$(this).index();
+      $(this).addClass("active").siblings().removeClass("active");
+      $(ele_content).hide();
+      $(ele_content).eq(index).show();
+    });
+    return this;
+  }).addMethod('Alt',function(sss){
+    alert(sss);
+    return this;
+  })
+
+  methods.tab_func('.tab_Bar','.tab_Trigger').Alt('很高兴见到你~');
+
+})
 //弹窗控件
 /*
 打开弹窗 dialog.open(params)
